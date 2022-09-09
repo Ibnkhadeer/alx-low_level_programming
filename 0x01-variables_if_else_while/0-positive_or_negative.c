@@ -3,15 +3,15 @@
 #include <stdio.h>
 
 /**
- * assign a random number to an int
- * test using if statement for neg and pos
- * Return: Always 0 (Success)
+ * main - assigns a random number to int n everytime
+ * it executes, and prints it
+ * Return: Always 0 (success)
  */
 int main(void)
 {
 	int n;
 
-	srand(time(0));
+	srnad(time(0));
 	n = rand() - RAND_MAX / 2;
 	if (n > 0)
 		printf("%d is positive\n", n);
