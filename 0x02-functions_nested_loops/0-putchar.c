@@ -1,13 +1,21 @@
-#include <stdio.h>
-
+#include <main.h>
 /**
- * main - prints putchar, followed by a new line
- * Return: Always 0 (Success)
+ * main - prints the word _putchar
+ *
+ * Return: 0 on success execution
  */
+
 int main(void)
 {
-	putchar("_putchar");
+	chars[] = "_putchar";
+	int i = 0;
 
-	return (0);
+	while (s[i]) != '\0')
+	{
+		_putchar(s[i]);
+		i++;
+	}
+	_putchar(10)
+
+		return (0);
 }
-
