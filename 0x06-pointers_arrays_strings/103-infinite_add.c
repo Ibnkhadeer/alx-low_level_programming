@@ -1,57 +1,26 @@
-/*
- * File: 103-print_buffer.c
- * Auth: Abbas Abdullahi
- */
-
 #include "main.h"
 #include <stdio.h>
 
 /**
- * print_buffer - Prints a buffer 10 bytes at a time, starting with
- *                the byte position, then showing the hex content,
- *                then displaying printable charcaters.
- * @b: The buffer to be printed.
- * @size: The number of bytes to be printed from the buffer.
+ * main - check the code
+ *
+ * Return: Always 0.
  */
-void print_buffer(char *b, int size)
+int main(void)
 {
-	int byte, index;
+    char s1[98] = "Hello ";
+    char s2[] = "World!\n";
+    char *ptr;
 
-	for (byte = 0; byte < size; byte += 10)
-	{
-		printf("%08x: ", byte);
-
-		for (index = 0; index < 10; index++)
-		{
-			if ((index + byte) >= size)
-				printf("  ");
-
-			else
-				printf("%02x", *(b + index + byte));
-
-			if ((index % 2) != 0 && index != 0)
-				printf(" ");
-		}
-
-		for (index = 0; index < 10; index++)
-		{
-			if ((index + byte) >= size)
-				break;
-
-			else if (*(b + index + byte) >= 31 &&
-				 *(b + index + byte) <= 126)
-				printf("%c", *(b + index + byte));
-
-			else
-				printf(".");
-		}
-
-		if (byte >= size)
-			continue;
-
-		printf("\n");
-	}
-
-	if (size <= 0)
-		printf("\n");
+    printf("%s\n", s1);
+    printf("%s", s2);
+    ptr = _strncat(s1, s2, 1);
+    printf("%s\n", s1);
+    printf("%s", s2);
+    printf("%s\n", ptr);
+    ptr = _strncat(s1, s2, 1024);
+    printf("%s", s1);
+    printf("%s", s2);
+    printf("%s", ptr);
+    return (0);
 }
