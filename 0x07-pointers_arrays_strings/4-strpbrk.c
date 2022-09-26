@@ -1,18 +1,25 @@
-#include "main.h"
-#include <stdio.h>
-
 /**
- * main - check the code
+ * _strpbrk - searches string for set of bytes
  *
- * Return: Always 0.
+ * @s: string to check
+ * @accept: substring of chars
+ *
+ * Return: pointer to first occurance
  */
-int main(void)
+char *_strpbrk(char *s, char *accept)
 {
-    char *s = "hello, world";
-    char *f = "world";
-    char *t;
+	int i;
 
-    t = _strpbrk(s, f);
-    printf("%s\n", t);
-    return (0);
+	while (*s)
+	{
+		i = 0;
+		while (*(accept + i) != '\0')
+		{
+			if (*(accept + i) == *s)
+				return (s);
+			i++;
+		}
+		s++;
+	}
+	return (0); /* didn't find an occurance */
 }
