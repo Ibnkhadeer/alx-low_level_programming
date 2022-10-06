@@ -1,6 +1,6 @@
 /**
  * File: 101-mul.c
- * Auth: Brennan D Baraban
+ * Auth: Abbas Halliru Abdullahi
  */
 
 #include "main.h"
