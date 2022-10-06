@@ -1,20 +1,3 @@
-
-zeus-kronos
-/
-alx-low_level_programming
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-alx-low_level_programming/0x0C-more_malloc_free/2-calloc.c
-@zeus-kronos
-zeus-kronos Create 2-calloc.c
- 1 contributor
-29 lines (22 sloc)  620 Bytes
 #include <stdlib.h>
 
 /**
