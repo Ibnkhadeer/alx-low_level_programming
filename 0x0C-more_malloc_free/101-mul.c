@@ -1,28 +1,9 @@
-
-bdbaraban
-/
-holbertonschool-low_level_programming
-Public
-Code
-Issues
-2
-Pull requests
-3
-Actions
-Projects
-Security
-Insights
-holbertonschool-low_level_programming/0x0B-more_malloc_free/101-mul.c
-@234761
-234761 Fixed malloc sizing + updated documentation
- 1 contributor
-237 lines (198 sloc)  4.62 KB
 /*
  * File: 101-mul.c
  * Auth: Brennan D Baraban
  */
 
-#include "holberton.h"
+#include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
 
