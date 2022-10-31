@@ -1,50 +1,47 @@
 #include "main.h"
 
 /**
-  * _strlen - length of a string
-  * @s: input char
-  * Return: length of a string
-**/
-
-int _strlen(char *s)
-{
-	int i = 0;
-
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-/**
-* append_text_to_file - appends text at the end of a file.
-* @filename: file to append.
-* @text_content: info to append into the file.
-* Return: 1 on success, -1 on failure
+* main - copy info from file_from to file_to.
+* @ac: number of arguments
+* @av: array of arguments
+* Return: Always 0.
 */
 
-int append_text_to_file(const char *filename, char *text_content)
+int main(int ac, char **av)
 {
-	ssize_t nletters;
-	int file;
+	int file_from, file_to;
+	ssize_t  l_read = 1024, l_write, close_file;
+	char content[1024];
 
-	if (!filename)
-		return (-1);
-	file = open(filename, O_WRONLY | O_APPEND);
-	if (file == -1)
+	if (ac != 3)
+	{ dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97); }
+	file_from = open(av[1], O_RDONLY);
+	if (file_from == -1)
+	{ dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]),
+		exit(98); }
+	file_to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (file_to == -1)
+	{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		exit(99); }
+	while (l_read == 1024)
 	{
-		return (-1);
+		l_read = read(file_from, content, 1024);
+		if (l_read == -1)
+		{ dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+			exit(98); }
+		l_write = write(file_to, content, l_read);
+		if (l_write == -1)
+		{ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+			exit(99); }
 	}
-	if (text_content)
-	{
-		nletters = write(file, text_content, _strlen(text_content));
-		if (nletters == -1)
-		{
-			close(file);
-			return (-1);
-		}
-	}
-	close(file);
-	return (1);
+	close_file = close(file_from);
+	if (close_file == -1)
+	{ dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", file_from);
+		exit(100); }
+	close_file = close(file_to);
+	if (close_file == -1)
+	{ dprintf(STDERR_FILENO, "Error: Can't close fd  %d\n", file_to);
+		exit(100); }
+return (0);
 }
